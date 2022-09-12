@@ -9,10 +9,13 @@ module Lib
     end
 
     def min
+      @type = :min
+      min_max([*@arr_values])
     end
 
     def max
-      min_max(@arr_values)
+      @type = :max
+      min_max([*@arr_values])
     end
 
     private
@@ -26,7 +29,8 @@ module Lib
         b = min_max(arr)
       end
 
-      a > b ? a : b
+      return a > b ? a : b if @type == :max
+      return a < b ? a : b if @type == :min
     end
   end
 end
