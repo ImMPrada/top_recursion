@@ -9,17 +9,24 @@ module Lib
     end
 
     def min
-      min_max
     end
 
     def max
-      min_max
+      min_max(@arr_values)
     end
 
     private
 
-    def min_max
-      puts 'hello from private'
+    def min_max(arr)
+      if arr.length <= 2  # the base case
+        a = arr[0]
+        b = arr[-1]
+      else
+        a = min_max(arr.slice!(0, arr.length / 2))
+        b = min_max(arr)
+      end
+
+      a > b ? a : b
     end
   end
 end
