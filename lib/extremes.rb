@@ -1,24 +1,20 @@
 module Lib
   class Extremes
-    def initialize(arr)
-      @arr_values = arr
+    def initialize; end
+
+    def min(arr_values)
+      self.type = :min
+      min_max([*arr_values])
     end
 
-    def ping
-      'pong'
-    end
-
-    def min
-      @type = :min
-      min_max([*@arr_values])
-    end
-
-    def max
-      @type = :max
-      min_max([*@arr_values])
+    def max(arr_values)
+      self.type = :max
+      min_max([*arr_values])
     end
 
     private
+
+    attr_accessor :type
 
     def min_max(arr)
       if arr.length <= 2  # the base case
@@ -29,8 +25,8 @@ module Lib
         b = min_max(arr)
       end
 
-      return a > b ? a : b if @type == :max
-      return a < b ? a : b if @type == :min
+      return a > b ? a : b if type == :max
+      return a < b ? a : b if type == :min
     end
   end
 end
