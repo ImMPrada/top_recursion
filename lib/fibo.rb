@@ -7,6 +7,7 @@
 # f6 = 8 = f5 + f4
 # f7 = 13 = f6 + f5
 # f8 = 21 = f7 + f6
+# f9 = 34 = f8 + f7
 
 module Lib
   class Fibo
@@ -14,6 +15,13 @@ module Lib
 
     def calc_for(number)
       fibo(number)
+    end
+
+    def calc_array_for(number)
+      response_array = []
+      (0..number).each { |i| response_array << fibo(i) }
+
+      response_array
     end
 
     private
